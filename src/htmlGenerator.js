@@ -1,6 +1,6 @@
-const manager = require('../library/manager');
-const engineer = require('../library/engineer');
-const intern = require('../library/intern');
+const Manager = require('../library/manager');
+const Engineer = require('../library/engineer');
+const Intern = require('../library/intern');
 
 function generateManagerCard(employee) {
   return `
@@ -44,21 +44,22 @@ function generateInternCard(employee) {
   `;
 }
 
-function htmlGenerator(teamMembers) {
-  const managerCards = teamMembers
-    .filter((employee) => employee instanceof manager)
-    .map(generateManagerCard)
-    .join('');
+function generateCards(employees) {
+  const cards = employees.map((employee) => {
+    if (employee instanceof Manager) {
+      return generateManagerCard(employee);
+    } else if (employee instanceof Engineer) {
+      return generateEngineerCard(employee);
+    } else if (employee instanceof Intern) {
+      return generateInternCard(employee);
+    }
+  });
 
-  const engineerCards = teamMembers
-    .filter((employee) => employee instanceof engineer)
-    .map(generateEngineerCard)
-    .join('');
+  return cards.join('');
+}
 
-  const internCards = teamMembers
-    .filter((employee) => employee instanceof intern)
-    .map(generateInternCard)
-    .join('');
+function generateHTML(teamMembers) {
+  const cards = generateCards(teamMembers);
 
   const html = `
     <!DOCTYPE html>
@@ -74,9 +75,7 @@ function htmlGenerator(teamMembers) {
           <h1>Team Overview</h1>
         </header>
         <main>
-          ${managerCards}
-          ${engineerCards}
-          ${internCards}
+          ${cards}
         </main>
       </body>
     </html>
@@ -85,4 +84,4 @@ function htmlGenerator(teamMembers) {
   return html;
 }
 
-module.exports = htmlGenerator;
+module.exports = generateHTML;
