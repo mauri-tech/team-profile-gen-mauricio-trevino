@@ -1,0 +1,23 @@
+{
+  "name": "team-profile-gen-mauricio-trevino",
+  "version": "1.0.0",
+  "description": "This is a Node.js command-line application that generates an HTML webpage displaying summaries for each person on a software engineering team.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mauri-tech/team-profile-gen-mauricio-trevino.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mauri-tech/team-profile-gen-mauricio-trevino/issues"
+  },
+  "homepage": "https://github.com/mauri-tech/team-profile-gen-mauricio-trevino#readme"
+}
